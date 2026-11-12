@@ -38,8 +38,10 @@ uart:
 modbus:
   uart_id: uart_bus
   role: server
+  id: modbus
 
 hoermann_hcp:
+  id: hoermann_hcp
 
 cover:
   - platform: hoermann_hcp
@@ -83,6 +85,7 @@ i2c:
   sda: GPIO06
   scl: GPIO05
   scan: false
+  id: i2c_bus
 
 sensor:
   - platform: aht10
