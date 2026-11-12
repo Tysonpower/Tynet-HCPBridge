@@ -38,10 +38,10 @@ uart:
 modbus:
   uart_id: uart_bus
   role: server
-  id: modbus
+  id: if_modbus
 
 hoermann_hcp:
-  id: hoermann_hcp
+  id: hoermann
 
 cover:
   - platform: hoermann_hcp
