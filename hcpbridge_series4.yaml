@@ -1,0 +1,140 @@
+substitutions:
+  name: "hcpbridge"
+  friendly_name: "Garage Door"
+  connection_state: "${name} Connected"
+  relay_name: "${friendly_name} Relay state"
+  light: "${friendly_name} Light"
+  btn_vent: "${friendly_name} Vent" 
+  btn_half: "${friendly_name} Half" 
+  btn_impulse: "${friendly_name} Impulse" 
+  sen_state: "${friendly_name} State" 
+  sen_fw: "${friendly_name} Firmware" 
+  sen_serial: "${friendly_name} Serial" 
+  sw_vent: "${friendly_name} Venting" 
+  sw_half: "${friendly_name} Open Half" 
+
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  name_add_mac_suffix: true
+  project:
+    name: "tynet.hcpbridge_series4"
+    version: "2026.11.1"
+
+dashboard_import:
+  package_import_url: github://Tysonpower/Tynet-HCPBridge/hcpbridge_series4.yaml@main
+
+esp32:
+  variant: esp32s3
+
+uart:
+  id: uart_bus
+  tx_pin: GPIO17
+  rx_pin: GPIO18
+  baud_rate: 57600
+  parity: EVEN
+  stop_bits: 1
+
+modbus:
+  uart_id: uart_bus
+  role: server
+
+hoermann_hcp:
+
+cover:
+  - platform: hoermann_hcp
+    name: ${friendly_name}
+    device_class: garage
+    id: garagedoor_cover
+
+button:
+  - platform: hoermann_hcp
+    vent:
+      name: ${btn_vent}
+      id: button_vent
+    half_open:
+      name: ${btn_half}
+      id: button_half
+
+light:
+  - platform: hoermann_hcp
+    name: ${light}
+    id: gd_light
+
+binary_sensor:
+  - platform: hoermann_hcp
+    is_connected:
+      name: ${connection_state}
+      id: sensor_connected
+
+text_sensor:
+  - platform: hoermann_hcp
+    door_state:
+      name: ${sen_state}
+      id: sensor_state
+    serial_number:
+      name: ${sen_serial}
+      id: sensor_serial
+    version:
+      name: ${sen_fw}
+      id: sensor_fwv
+
+i2c:
+  sda: GPIO06
+  scl: GPIO05
+  scan: false
+
+sensor:
+  - platform: aht10
+    id: sensor_aht20
+    variant: AHT20
+    temperature:
+      name: "AHT20 Temperature"
+      id: sensor_aht_temperature
+    humidity:
+      name: "AHT20 Humidity"
+      id: sensor_aht_humidity
+    update_interval: 30s
+  - platform: wifi_signal
+    name: "WiFi Signal dB"
+    id: wifi_signal_db
+    update_interval: 30s
+    entity_category: "diagnostic"
+
+api:
+
+web_server:
+  ota: false
+  port: 80
+  version: 3
+
+wifi:
+  fast_connect: false
+  ap: {}
+
+captive_portal:
+
+improv_ble:
+  authorizer: none
+  
+improv_serial:
+
+# Enable logging
+logger:
+  level: WARN
+  baud_rate: 9600
+
+ota:
+  - platform: esphome
+    id: ota_esphome
+  - platform: http_request
+    id: ota_http_request
+
+http_request:
+  id: http_request_id
+
+update:
+  - platform: http_request
+    id: update_http_request
+    name: "ESPHome update"
+    source: https://Tysonpower.github.io/Tynet-HCPBridge/firmware/manifest_series4.json

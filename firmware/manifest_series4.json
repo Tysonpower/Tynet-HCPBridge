@@ -1,0 +1,13 @@
+{
+  "name": "Tynet HCPBridge Series 4",
+  "version": "2026.11.1",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "ota": {
+        "md5": "f3aee131b7c0120fd8e72e94224849a0",
+        "path": "hcpbridge_series4.ota.bin"
+      }
+    }
+  ]
+}
