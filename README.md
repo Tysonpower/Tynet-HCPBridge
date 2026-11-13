@@ -1,13 +1,13 @@
 # Buy a ready to use PCB on [shop.tynet.eu](https://shop.tynet.eu/rs485-bridge-diy-hoermann-mqtt-adapter-esp32-s3-dev-board) :rocket:
 
-If you use a PCB from us, you can get started with our instructions: [Getting started with tynet.eu PCBs](https://github.com/Tysonpower/Tynet-HCPBridge/wiki)
+Bought one of our HCPBridges? Get started with our instructions: [Getting started with Tynet HCPBridge](https://github.com/Tysonpower/Tynet-HCPBridge/wiki)
 
 <br>
 
 # Hörmann HCPBridge for Home Assistant
 
 This repository includes firmware that emulates the Hörmann UAP1-HCP board (Series 4 motors) as well as the older UAP1 that is used for Series 3 motors.
-It uses a ESP32 with a RS485 converter and exposes garage door controls over a web page as well as Home Assistant.
+It uses a ESP32 with a RS485 converter and exposes garage door controls over Home Assistant as well as a web UI.
 
 <br>
 
