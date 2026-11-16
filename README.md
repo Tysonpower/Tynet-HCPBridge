@@ -1,4 +1,4 @@
-# Buy a ready to use PCB on [shop.tynet.eu](https://shop.tynet.eu/rs485-bridge-diy-hoermann-mqtt-adapter-esp32-s3-dev-board) :rocket:
+# Buy a ready to use PCB on [shop.tynet.eu](https://shop.tynet.eu/rs485-bridge-diy-hoermann-home-assistant-adapter-esp32-s3-dev-board) :rocket:
 
 Bought one of our HCPBridges? Get started with our instructions: [Getting started with Tynet HCPBridge](https://github.com/Tysonpower/Tynet-HCPBridge/wiki)
 
