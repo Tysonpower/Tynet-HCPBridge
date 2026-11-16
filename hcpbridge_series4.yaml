@@ -12,6 +12,8 @@ substitutions:
   sen_serial: "${friendly_name} Serial" 
   sw_vent: "${friendly_name} Venting" 
   sw_half: "${friendly_name} Open Half" 
+  web_user: "admin"
+  web_pass: "tynet.eu"
 
 esphome:
   name: "${name}"
@@ -105,6 +107,14 @@ sensor:
     entity_category: "diagnostic"
 
 api:
+
+web_server:
+  ota: false
+  port: 80
+  version: 3
+  auth:
+    username: "${web_user}"
+    password: "${web_pass}"
 
 wifi:
   fast_connect: false
